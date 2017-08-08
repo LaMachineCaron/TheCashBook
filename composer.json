@@ -17,7 +17,8 @@
 		"barryvdh/laravel-ide-helper": "^2.4",
 		"fzaninotto/faker": "~1.4",
 		"mockery/mockery": "0.9.*",
-		"phpunit/phpunit": "~5.7"
+		"phpunit/phpunit": "~5.7",
+		"doctrine/dbal": "~2.3"
 	},
 	"autoload": {
 		"classmap": [
@@ -47,6 +48,7 @@
 			"Illuminate\\Foundation\\ComposerScripts::postUpdate",
 			"php artisan optimize",
 			"php artisan key:generate",
+			"php artisan ide-helper:models --write",
 			"php artisan ide-helper:generate",
 			"php artisan ide-helper:meta",
 			"php artisan migrate:refresh --seed"
