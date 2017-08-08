@@ -16,7 +16,7 @@
 use App\Models\Bill;
 use App\Models\User;
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(User::class, function (Faker\Generator $faker) {
 	static $password;
 
 	return [
