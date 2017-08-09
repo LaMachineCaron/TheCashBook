@@ -22,10 +22,13 @@ class BillController extends Controller {
 	 *
 	 * @param  \Illuminate\Http\Request $request
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return string The created bill.
 	 */
 	public function store(Request $request) {
-		return Bill::create($request->toArray());
+		$bill = $request->toArray();
+		$bill['user_id'] = $bill['user']['id'];
+		Log::info('Create a bill: ', $bill);
+		return Bill::create($bill)->load('user');
 	}
 
 	/**

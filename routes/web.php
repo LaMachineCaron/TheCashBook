@@ -19,3 +19,5 @@ Route::name('createBill')->post('/bill', 'BillController@store');
 
 Route::name('getPayments')->get('/payment', 'PaymentController@getAll');
 
+Route::name('getUsers')->get('/user', 'UserController@getAll');
+
