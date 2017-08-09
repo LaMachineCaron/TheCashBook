@@ -3,21 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-/**
- * App\Models\BillPart
- *
- * @method static bool|null forceDelete()
- * @method static \Illuminate\Database\Query\Builder|\App\Models\BillPart onlyTrashed()
- * @method static bool|null restore()
- * @method static \Illuminate\Database\Query\Builder|\App\Models\BillPart withTrashed()
- * @method static \Illuminate\Database\Query\Builder|\App\Models\BillPart withoutTrashed()
- * @mixin \Eloquent
- */
 class BillPart extends Model {
 
 	use SoftDeletes;
 
 	public $timestamps = true;
+	public static $snakeAttributes = false;
+
+	public function user(): BelongsTo {
+		return $this->belongsTo(User::class);
+	}
 }

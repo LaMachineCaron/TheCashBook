@@ -11,12 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-	return view('welcome');
-});
+Route::name('login')->post('/login', 'Auth\LoginController@doLogin');
+Route::name('logout')->get('/logout', 'Auth\LoginController@doLogout');
 
-Auth::routes();
+Route::name('getBills')->get('/bill', 'BillController@index');
+Route::name('createBill')->post('/bill', 'BillController@store');
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::name('getBills')->get('/bills', 'BillController@index');
+Route::name('getPayments')->get('/payment', 'PaymentController@getAll');
 

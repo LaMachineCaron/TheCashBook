@@ -14,7 +14,7 @@ class BillController extends Controller {
 	 * @return Bill[]|\Illuminate\Database\Eloquent\Collection
 	 */
 	public function index() {
-		return Bill::all();
+		return Bill::with('user', 'parts.user')->get();
 	}
 
 	/**

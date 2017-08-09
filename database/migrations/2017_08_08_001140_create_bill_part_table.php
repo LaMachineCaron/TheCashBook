@@ -12,7 +12,7 @@ class CreateBillPartTable extends Migration {
 	 * @return void
 	 */
 	public function up() {
-		Schema::create('billParts', function (Blueprint $table) {
+		Schema::create('bill_parts', function (Blueprint $table) {
 			$table->integer('bill_id')->unsigned();
 			$table->integer('user_id')->unsigned();
 			$table->double('percentage');
@@ -32,6 +32,6 @@ class CreateBillPartTable extends Migration {
 	 * @return void
 	 */
 	public function down() {
-		Schema::dropIfExists('billParts');
+		Schema::dropIfExists('bill_parts');
 	}
 }
