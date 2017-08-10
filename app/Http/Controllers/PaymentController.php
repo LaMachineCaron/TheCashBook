@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Payment;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Controller for the payment model.

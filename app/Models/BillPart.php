@@ -13,7 +13,14 @@ class BillPart extends Model {
 	public $timestamps = true;
 	public static $snakeAttributes = false;
 
+	protected $fillable = ['*'];
+
 	public function user(): BelongsTo {
 		return $this->belongsTo(User::class);
+	}
+
+	public function bill(): BelongsTo
+	{
+		return $this->belongsTo(Bill::class);
 	}
 }
