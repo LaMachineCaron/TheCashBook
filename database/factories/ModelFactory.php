@@ -46,8 +46,8 @@ $factory->define(BillPart::class, function () {
 
 $factory->define(Payment::class, function (Faker\Generator $faker) {
 	return [
-		'user_from' => User::inRandomOrder()->first()->id,
-		'user_to' => User::inRandomOrder()->first()->id,
+		'userFrom' => User::inRandomOrder()->first()->id,
+		'userTo' => User::inRandomOrder()->first()->id,
 		'amount' => $faker->numberBetween(0, 1000)
 	];
 });

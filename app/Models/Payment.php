@@ -12,12 +12,15 @@ class Payment extends Model
 {
 	public $timestamps = true;
 	public static $snakeAttributes = false;
+	protected $fillable = ['userFrom', 'userTo', 'amount'];
 
-	public function userFrom(): BelongsTo {
-		return $this->belongsTo(User::class, 'user_from');
+	public function uFrom(): BelongsTo
+	{
+		return $this->belongsTo(User::class, 'userFrom');
 	}
 
-	public function userTo(): BelongsTo {
-		return $this->belongsTo(User::class, 'user_to');
+	public function uTo(): BelongsTo
+	{
+		return $this->belongsTo(User::class, 'userTo');
 	}
 }

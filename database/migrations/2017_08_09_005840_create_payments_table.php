@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreatePaymentsTable extends Migration
 {
@@ -15,13 +15,13 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->increments('id');
-	        $table->integer('user_from')->unsigned();
-	        $table->integer('user_to')->unsigned();
+	        $table->integer('userFrom')->unsigned();
+	        $table->integer('userTo')->unsigned();
 	        $table->double('amount');
             $table->timestamps();
 
-	        $table->foreign('user_from')->references('id')->on('users');
-	        $table->foreign('user_to')->references('id')->on('users');
+	        $table->foreign('userFrom')->references('id')->on('users');
+	        $table->foreign('userTo')->references('id')->on('users');
         });
     }
 
