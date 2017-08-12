@@ -13,7 +13,8 @@ class BillPartSeeder extends Seeder {
 	 */
 	public function run() {
 		foreach(Bill::all() as $bill) {
-			factory(BillPart::class, rand(1,1))->create(['bill_id' => $bill->id]);
+			BillPart::create(['bill_id' => $bill->id, 'user_id' => 1, 'percentage' => 0.5]);
+			BillPart::create(['bill_id' => $bill->id, 'user_id' => 2, 'percentage' => 0.5]);
 		}
 	}
 }

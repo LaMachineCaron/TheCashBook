@@ -15,8 +15,8 @@
 
 use App\Models\Bill;
 use App\Models\BillPart;
-use App\Models\User;
 use App\Models\Payment;
+use App\Models\User;
 
 $factory->define(User::class, function (Faker\Generator $faker) {
 	static $password;
@@ -33,14 +33,13 @@ $factory->define(Bill::class, function (Faker\Generator $faker) {
 	return [
 		'user_id' => User::inRandomOrder()->first()->id,
 		'title' => $faker->text(rand(5, 20)),
-		'totalPrice' => round($faker->randomFloat(), 2),
+		'totalPrice' => $faker->randomFloat(2, 0, 50),
 		'description' => $faker->text(50)
 	];
 });
 
-$factory->define(BillPart::class, function (Faker\Generator $faker, $arguments) {
+$factory->define(BillPart::class, function () {
 	return [
-		'user_id' => User::inRandomOrder()->first()->id,
 		'percentage' => 0.5
 	];
 });
