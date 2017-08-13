@@ -14,6 +14,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Models\Bill;
+use App\Models\BillBook;
 use App\Models\BillPart;
 use App\Models\Payment;
 use App\Models\User;
@@ -49,5 +50,11 @@ $factory->define(Payment::class, function (Faker\Generator $faker) {
 		'userFrom' => User::inRandomOrder()->first()->id,
 		'userTo' => User::inRandomOrder()->first()->id,
 		'amount' => $faker->numberBetween(0, 1000)
+	];
+});
+
+$factory->define(BillBook::class, function (Faker\Generator $faker) {
+	return [
+		'name' => $faker->text(20)
 	];
 });

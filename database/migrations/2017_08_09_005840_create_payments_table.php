@@ -17,11 +17,13 @@ class CreatePaymentsTable extends Migration
             $table->increments('id');
 	        $table->integer('userFrom')->unsigned();
 	        $table->integer('userTo')->unsigned();
+	        $table->integer('billBookId')->unsigned();
 	        $table->double('amount');
             $table->timestamps();
 
 	        $table->foreign('userFrom')->references('id')->on('users');
 	        $table->foreign('userTo')->references('id')->on('users');
+	        $table->foreign('billBookId')->references('id')->on('bill_books');
         });
     }
 
