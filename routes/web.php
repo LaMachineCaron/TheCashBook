@@ -20,6 +20,7 @@ Route::name('deleteBill')->delete('/bill/{id}', 'BillController@destroy');
 
 Route::name('getPayments')->get('/payment', 'PaymentController@getAll');
 Route::name('createPayment')->post('/payment', 'PaymentController@store');
+Route::name('deletePayment')->delete('/payment/{id}', 'PaymentController@destroy');
 
 Route::name('getUsers')->get('/user', 'UserController@getAll');
 

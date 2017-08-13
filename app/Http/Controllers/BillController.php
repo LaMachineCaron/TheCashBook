@@ -57,8 +57,9 @@ class BillController extends Controller {
 	 *
 	 * @return \Illuminate\Http\Response 200 If delete has succeeded, else 500
 	 */
-	public function destroy(int $id)
+	public function destroy(int $id): Response
 	{
+		Log::info('Soft-deleting bill with id ' . $id);
 		$isDeleted = Bill::findOrFail($id)->delete();
 		if ($isDeleted) {
 			return new Response("deleted", 200);

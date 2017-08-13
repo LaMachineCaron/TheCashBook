@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Payment;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
 
 /**
@@ -30,5 +31,22 @@ class PaymentController extends Controller
 	{
 		Log::info('Create a payment: ', $request->toArray());
 		return Payment::create($request->toArray())->load('uFrom', 'uTo');
+	}
+
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int $id The id of the bill to remove
+	 *
+	 * @return \Illuminate\Http\Response 200 If delete has succeeded, else 500
+	 */
+	public function destroy(int $id): Response
+	{
+		Log::info('Soft-deleting payment with id ' . $id);
+		$isDeleted = Payment::findOrFail($id)->delete();
+		if ($isDeleted) {
+			return new Response("deleted", 200);
+		}
+		return new Response("Error while deleting", 500);
 	}
 }
