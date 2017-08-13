@@ -16,6 +16,7 @@ Route::name('logout')->get('/logout', 'Auth\LoginController@doLogout');
 
 Route::name('getBills')->get('/bill', 'BillController@index');
 Route::name('createBill')->post('/bill', 'BillController@store');
+Route::name('deleteBill')->delete('/bill/{id}', 'BillController@destroy');
 
 Route::name('getPayments')->get('/payment', 'PaymentController@getAll');
 Route::name('createPayment')->post('/payment', 'PaymentController@store');

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Bill;
 use App\Models\BillPart;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class BillController extends Controller {
@@ -26,7 +28,14 @@ class BillController extends Controller {
 	 * @return string The created bill.
 	 */
 	public function store(Request $request) {
-		return $this->createBillAndBillParts($request->toArray())->load('user', 'parts.user');
+		DB::beginTransaction();
+		try {
+			$bill = $this->createBillAndBillParts($request->toArray())->load('user', 'parts.user');
+			DB::commit();
+			return $bill;
+		} catch (Exception $e) {
+			DB::rollback();
+		}
 	}
 
 	/**
@@ -44,12 +53,17 @@ class BillController extends Controller {
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  Bill $bill
+	 * @param  int $id The id of the bill to remove
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Http\Response 200 If delete has succeeded, else 500
 	 */
-	public function destroy(Bill $bill) {
-		return null;
+	public function destroy(int $id)
+	{
+		$isDeleted = Bill::findOrFail($id)->delete();
+		if ($isDeleted) {
+			return new Response("deleted", 200);
+		}
+		return new Response("Error while deleting", 500);
 	}
 
 	/**
