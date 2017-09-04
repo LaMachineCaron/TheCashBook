@@ -15,6 +15,7 @@ Route::name('login')->post('/login', 'Auth\LoginController@doLogin');
 Route::name('logout')->get('/logout', 'Auth\LoginController@doLogout');
 
 Route::name('getBillBooks')->get('/billBook', 'BillBookController@getAll');
+Route::name('createBillBook')->post('/billBook', 'BillBookController@store');
 
 Route::name('getBills')->get('/bill', 'BillController@index');
 Route::name('createBill')->post('/bill', 'BillController@store');

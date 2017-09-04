@@ -16,6 +16,8 @@ class BillBook extends Model
 	public static $snakeAttributes = false;
 	public $timestamps = true;
 
+	protected $fillable = ['name'];
+
 	public function bills(): HasMany
 	{
 		return $this->hasMany(Bill::class, 'billBookId');
