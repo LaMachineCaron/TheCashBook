@@ -26,4 +26,5 @@ Route::name('createPayment')->post('/payment', 'PaymentController@store');
 Route::name('deletePayment')->delete('/payment/{id}', 'PaymentController@destroy');
 
 Route::name('getUsers')->get('/user', 'UserController@getAll');
+Route::name('createUser')->post('/user', 'UserController@store');
 
