@@ -1,3 +1,5 @@
+This is the back-end of the application. Front-end and more informations: https://github.com/Res260/Facture
+
 # TheCashBook
 
-Lisence is GPL 2.0
+Licence is GPL 2.0
